@@ -1,0 +1,8 @@
+name: "SnackCards"
+root: "."
+attach: true
+
+windows:
+  - panes:
+      - command: "claude"
+  - panes:
