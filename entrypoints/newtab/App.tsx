@@ -194,7 +194,12 @@ export default function App() {
                 <article
                   key={item.url}
                   className="px-8 py-6 hover:bg-slate-50 cursor-pointer group transition-colors duration-150"
-                  onClick={() => window.open(item.url, '_blank')}
+                  onClick={() => {
+                    window.open(item.url, '_blank')
+                    if (!item.hasBeenRead) {
+                      markAsRead(item.url, new MouseEvent('click'))
+                    }
+                  }}
                 >
                   <div className="flex items-start space-x-4">
                     {/* Favicon */}
