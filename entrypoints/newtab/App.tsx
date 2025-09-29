@@ -101,13 +101,9 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="max-w-6xl mx-auto">
-        <Header
-          totalItems={items.length}
-          readItems={readCount}
-          unreadItems={unreadCount}
-        />
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <div className="max-w-4xl mx-auto">
+        <Header />
 
         <FilterTabs
           filter={filter}
@@ -117,11 +113,11 @@ export default function App() {
           readItems={readCount}
         />
 
-        <div className="bg-white">
+        <div className="p-6">
           {filteredItems.length === 0 ? (
             <EmptyState filter={filter} />
           ) : (
-            <div className="divide-y divide-slate-100">
+            <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-1">
               {filteredItems.map((item) => (
                 <ReadingListItemComponent
                   key={item.url}
