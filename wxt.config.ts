@@ -7,5 +7,6 @@ export default defineConfig({
     permissions: ['readingList'],
     name: 'Snack Cards',
     description: 'Display your Chrome Reading List as beautiful cards in a new tab',
+    action: {},
   },
 });
