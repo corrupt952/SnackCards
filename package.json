@@ -1,9 +1,10 @@
 {
-  "name": "wxt-react-starter",
-  "description": "manifest.json description",
+  "name": "snack-cards",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "packageManager": "pnpm@10.17.1",
+  "version": "2025.10.1",
+  "description": "Display your Chrome Reading List as beautiful cards in a new tab",
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",
@@ -15,10 +16,8 @@
     "format": "prettier --write \"entrypoints/**/*.{ts,tsx,js,jsx,json}\"",
     "postinstall": "wxt prepare"
   },
-  "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
-  },
+  "author": "K@zuki.",
+  "license": "MIT",
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.13",
     "@tailwindcss/typography": "^0.5.19",
@@ -31,5 +30,9 @@
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2",
     "wxt": "^0.20.6"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }

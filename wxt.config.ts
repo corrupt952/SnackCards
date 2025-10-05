@@ -5,7 +5,7 @@ export default defineConfig({
   modules: ['@wxt-dev/module-react'],
   manifest: {
     permissions: ['readingList'],
-    name: 'Snack Cards',
+    name: 'Snack Cards - Reading List Manager',
     description: 'Display your Chrome Reading List as beautiful cards in a new tab',
     action: {},
   },
