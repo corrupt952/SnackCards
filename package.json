@@ -2,7 +2,7 @@
   "name": "snack-cards",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@10.21.0",
   "version": "2025.10.1",
   "description": "Display your Chrome Reading List as beautiful cards in a new tab",
   "scripts": {
