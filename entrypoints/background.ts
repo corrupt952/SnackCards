@@ -34,10 +34,6 @@ export default defineBackground(() => {
     updateBadge();
   });
 
-  // Open Reading List page when extension icon is clicked
-  browser.action.onClicked.addListener(() => {
-    browser.tabs.create({
-      url: browser.runtime.getURL("/reading-list.html"),
-    });
-  });
+  // Open side panel when extension icon is clicked
+  browser.sidePanel.setPanelBehavior({ openPanelOnActionClick: true });
 });
