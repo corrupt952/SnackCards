@@ -1,20 +1,20 @@
-import React from 'react'
-import VideoEmbed from './VideoEmbed'
-import { detectVideoService, isVideoUrl } from '../utils/videoUtils'
+import React from "react";
+import VideoEmbed from "./VideoEmbed";
+import { detectVideoService, isVideoUrl } from "../utils/videoUtils";
 
 interface ReadingListItem {
-  title: string
-  url: string
-  hasBeenRead: boolean
-  creationTime?: number
+  title: string;
+  url: string;
+  hasBeenRead: boolean;
+  creationTime?: number;
 }
 
 interface ReadingListItemProps {
-  item: ReadingListItem
-  onMarkAsRead: (url: string, e: React.MouseEvent) => Promise<void>
-  onMarkAsUnread: (url: string, e: React.MouseEvent) => Promise<void>
-  onRemove: (url: string, e: React.MouseEvent) => Promise<void>
-  onClick: (url: string) => void
+  item: ReadingListItem;
+  onMarkAsRead: (url: string, e: React.MouseEvent) => Promise<void>;
+  onMarkAsUnread: (url: string, e: React.MouseEvent) => Promise<void>;
+  onRemove: (url: string, e: React.MouseEvent) => Promise<void>;
+  onClick: (url: string) => void;
 }
 
 export default function ReadingListItemComponent({
@@ -22,48 +22,47 @@ export default function ReadingListItemComponent({
   onMarkAsRead,
   onMarkAsUnread,
   onRemove,
-  onClick
+  onClick,
 }: ReadingListItemProps) {
   const getDomain = (url: string) => {
     try {
-      return new URL(url).hostname.replace('www.', '')
+      return new URL(url).hostname.replace("www.", "");
     } catch {
-      return url
+      return url;
     }
-  }
+  };
 
   const getFavicon = (url: string) => {
-    const domain = getDomain(url)
-    return `https://www.google.com/s2/favicons?domain=${domain}&sz=16`
-  }
+    const domain = getDomain(url);
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=16`;
+  };
 
   const getTimeAgo = (timestamp?: number) => {
-    if (!timestamp) return ''
-    const now = Date.now()
-    const diff = now - timestamp
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24))
-    const hours = Math.floor(diff / (1000 * 60 * 60))
+    if (!timestamp) return "";
+    const now = Date.now();
+    const diff = now - timestamp;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(diff / (1000 * 60 * 60));
 
-    if (days > 0) return `${days}d ago`
-    if (hours > 0) return `${hours}h ago`
-    return 'recently'
-  }
+    if (days > 0) return `${days}d ago`;
+    if (hours > 0) return `${hours}h ago`;
+    return "recently";
+  };
 
-  const isVideo = isVideoUrl(item.url)
-  const videoInfo = isVideo ? detectVideoService(item.url) : null
-
+  const isVideo = isVideoUrl(item.url);
+  const videoInfo = isVideo ? detectVideoService(item.url) : null;
 
   const handleCardClick = () => {
     if (!isVideo) {
-      onClick(item.url)
+      onClick(item.url);
     }
-  }
+  };
 
   return (
     <article
       className={`bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 ${
-        item.hasBeenRead ? 'opacity-60' : ''
-      } ${isVideo ? '' : 'cursor-pointer group'}`}
+        item.hasBeenRead ? "opacity-60" : ""
+      } ${isVideo ? "" : "cursor-pointer group"}`}
       onClick={handleCardClick}
     >
       <div className="flex items-start space-x-4">
@@ -76,7 +75,7 @@ export default function ReadingListItemComponent({
                 alt=""
                 className="w-6 h-6"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none'
+                  (e.target as HTMLImageElement).style.display = "none";
                 }}
               />
             </div>
@@ -87,20 +86,20 @@ export default function ReadingListItemComponent({
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between">
             <div className="flex-1 min-w-0 pr-4">
-              <h3 className={`text-lg font-semibold leading-6 transition-colors duration-200 ${
-                item.hasBeenRead
-                  ? 'text-slate-500 dark:text-slate-500 line-through'
-                  : 'text-slate-900 dark:text-white'
-              } ${!isVideo ? 'group-hover:text-blue-600 dark:group-hover:text-blue-400' : ''}`}>
+              <h3
+                className={`text-lg font-semibold leading-6 transition-colors duration-200 ${
+                  item.hasBeenRead
+                    ? "text-slate-500 dark:text-slate-500 line-through"
+                    : "text-slate-900 dark:text-white"
+                } ${!isVideo ? "group-hover:text-blue-600 dark:group-hover:text-blue-400" : ""}`}
+              >
                 {item.title}
               </h3>
               <div className="mt-3 flex items-center space-x-3 text-sm">
                 <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
                   {getDomain(item.url)}
                 </span>
-                <span className="text-slate-500 dark:text-slate-400">
-                  {getTimeAgo(item.creationTime)}
-                </span>
+                <span className="text-slate-500 dark:text-slate-400">{getTimeAgo(item.creationTime)}</span>
                 {item.hasBeenRead && (
                   <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300">
                     ✓ Read
@@ -115,7 +114,9 @@ export default function ReadingListItemComponent({
             </div>
 
             {/* Actions */}
-            <div className={`flex items-center space-x-2 transition-opacity duration-200 ${isVideo ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+            <div
+              className={`flex items-center space-x-2 transition-opacity duration-200 ${isVideo ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
+            >
               {!item.hasBeenRead ? (
                 <button
                   onClick={(e) => onMarkAsRead(item.url, e)}
@@ -146,14 +147,11 @@ export default function ReadingListItemComponent({
           {/* Video Embed */}
           {isVideo && videoInfo && (
             <div className="mt-4">
-              <VideoEmbed
-                videoInfo={videoInfo}
-                title={item.title}
-              />
+              <VideoEmbed videoInfo={videoInfo} title={item.title} />
             </div>
           )}
         </div>
       </div>
     </article>
-  )
+  );
 }

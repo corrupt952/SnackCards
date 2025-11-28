@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export default function LoadingSpinner() {
   return (
@@ -8,5 +8,5 @@ export default function LoadingSpinner() {
         <p className="text-gray-600">Loading reading list...</p>
       </div>
     </div>
-  )
+  );
 }

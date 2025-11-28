@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export default function Header() {
   return (
@@ -8,5 +8,5 @@ export default function Header() {
         <p className="mt-1 text-slate-600 dark:text-slate-400 text-lg">Your curated articles and saved reads</p>
       </div>
     </div>
-  )
+  );
 }

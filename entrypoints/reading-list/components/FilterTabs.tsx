@@ -1,27 +1,21 @@
-import React from 'react'
+import React from "react";
 
-type FilterType = 'all' | 'unread' | 'read'
+type FilterType = "all" | "unread" | "read";
 
 interface FilterTabsProps {
-  filter: FilterType
-  onFilterChange: (filter: FilterType) => void
-  totalItems: number
-  unreadItems: number
-  readItems: number
+  filter: FilterType;
+  onFilterChange: (filter: FilterType) => void;
+  totalItems: number;
+  unreadItems: number;
+  readItems: number;
 }
 
-export default function FilterTabs({
-  filter,
-  onFilterChange,
-  totalItems,
-  unreadItems,
-  readItems
-}: FilterTabsProps) {
+export default function FilterTabs({ filter, onFilterChange, totalItems, unreadItems, readItems }: FilterTabsProps) {
   const tabs = [
-    { key: 'unread' as FilterType, label: 'Unread', count: unreadItems },
-    { key: 'all' as FilterType, label: 'All', count: totalItems },
-    { key: 'read' as FilterType, label: 'Read', count: readItems }
-  ]
+    { key: "unread" as FilterType, label: "Unread", count: unreadItems },
+    { key: "all" as FilterType, label: "All", count: totalItems },
+    { key: "read" as FilterType, label: "Read", count: readItems },
+  ];
 
   return (
     <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
@@ -33,8 +27,8 @@ export default function FilterTabs({
               onClick={() => onFilterChange(key)}
               className={`py-4 px-2 border-b-2 font-semibold text-base transition-colors duration-200 ${
                 filter === key
-                  ? 'border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400'
-                  : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 hover:border-slate-300 dark:hover:border-slate-600'
+                  ? "border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400"
+                  : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 hover:border-slate-300 dark:hover:border-slate-600"
               }`}
             >
               {label}
@@ -46,5 +40,5 @@ export default function FilterTabs({
         </nav>
       </div>
     </div>
-  )
+  );
 }
