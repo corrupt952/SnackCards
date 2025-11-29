@@ -1,4 +1,5 @@
 import { detectVideoService, getVideoThumbnail } from "@/utils/videoUtils";
+import { getTimeAgo } from "@/utils/formatUtils";
 
 interface ReadingListItem {
   title: string;
@@ -18,18 +19,6 @@ interface VideoItemProps {
 export default function VideoItem({ item, onOpen, onMarkAsRead, onMarkAsUnread, onRemove }: VideoItemProps) {
   const videoInfo = detectVideoService(item.url);
   const thumbnail = getVideoThumbnail(videoInfo);
-
-  const getTimeAgo = (timestamp?: number) => {
-    if (!timestamp) return "";
-    const now = Date.now();
-    const diff = now - timestamp;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-
-    if (days > 0) return `${days}d`;
-    if (hours > 0) return `${hours}h`;
-    return "now";
-  };
 
   const getServiceLabel = () => {
     switch (videoInfo.service) {
