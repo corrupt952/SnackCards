@@ -64,8 +64,15 @@ export default function App() {
     }
   };
 
+  const openInCurrentTab = async (url: string) => {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (tab?.id) {
+      chrome.tabs.update(tab.id, { url });
+    }
+  };
+
   const handleArticleClick = (url: string) => {
-    chrome.tabs.create({ url });
+    openInCurrentTab(url);
     const item = items.find((item) => item.url === url);
     if (item && !item.hasBeenRead) {
       markAsRead(url);
@@ -73,7 +80,7 @@ export default function App() {
   };
 
   const handleVideoOpen = (url: string) => {
-    chrome.tabs.create({ url });
+    openInCurrentTab(url);
     const item = items.find((item) => item.url === url);
     if (item && !item.hasBeenRead) {
       markAsRead(url);
@@ -118,14 +125,14 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col">
+    <div className="min-h-screen bg-slate-100 dark:bg-slate-950 flex flex-col">
       {/* Header */}
-      <header className="sticky top-0 z-10 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 px-3 py-2">
+      <header className="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-3 py-2 shadow-sm">
         <div className="flex items-center justify-between">
           <h1 className="text-base font-bold text-slate-900 dark:text-white">Snack Cards</h1>
           {unreadCount > 0 && (
-            <span className="px-2 py-0.5 text-xs font-medium bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 rounded-full">
-              {unreadCount} unread
+            <span className="px-2 py-0.5 text-xs font-medium bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded-full">
+              {unreadCount}
             </span>
           )}
         </div>
@@ -138,8 +145,8 @@ export default function App() {
               onClick={() => setFilter(key)}
               className={`flex-1 px-2 py-1.5 text-xs font-medium rounded-md transition-colors ${
                 filter === key
-                  ? "bg-blue-600 text-white"
-                  : "bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600"
+                  ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900"
+                  : "text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
               }`}
             >
               {label} ({count})
@@ -149,16 +156,15 @@ export default function App() {
       </header>
 
       {/* List */}
-      <main className="flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto p-2">
         {filteredItems.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-64 text-slate-500 dark:text-slate-400">
-            <span className="text-3xl mb-2">{filter === "unread" ? "🎉" : filter === "read" ? "📚" : "📭"}</span>
+          <div className="flex flex-col items-center justify-center h-64 text-slate-400 dark:text-slate-500">
             <p className="text-sm">
-              {filter === "unread" ? "All caught up!" : filter === "read" ? "No read articles" : "No articles yet"}
+              {filter === "unread" ? "All caught up!" : filter === "read" ? "No read items" : "No items yet"}
             </p>
           </div>
         ) : (
-          <ul className="divide-y divide-slate-200 dark:divide-slate-700">
+          <ul className="flex flex-col gap-1">
             {filteredItems.map((item) =>
               isVideoUrl(item.url) ? (
                 <VideoItem
