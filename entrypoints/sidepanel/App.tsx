@@ -104,15 +104,15 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-slate-50 dark:bg-slate-900">
-        <div className="w-6 h-6 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin" />
+      <div className="flex items-center justify-center h-screen bg-stone-50 dark:bg-stone-900">
+        <div className="w-6 h-6 border-2 border-stone-300 border-t-blue-600 rounded-full animate-spin" />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen bg-slate-50 dark:bg-slate-900 p-4">
+      <div className="flex flex-col items-center justify-center h-screen bg-stone-50 dark:bg-stone-900 p-4">
         <p className="text-red-500 text-sm mb-3">{error}</p>
         <button
           onClick={loadReadingList}
@@ -125,11 +125,11 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-slate-950 flex flex-col">
+    <div className="min-h-screen bg-stone-100 dark:bg-stone-950 flex flex-col">
       {/* Header */}
-      <header className="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-3 py-2 shadow-sm">
+      <header className="sticky top-0 z-10 bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 px-3 py-2 shadow-sm">
         <div className="flex items-center justify-between">
-          <h1 className="text-base font-bold text-slate-900 dark:text-white">Snack Cards</h1>
+          <h1 className="text-base font-bold text-stone-900 dark:text-white">Snack Cards</h1>
           {unreadCount > 0 && (
             <span className="px-2 py-0.5 text-xs font-medium bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded-full">
               {unreadCount}
@@ -145,8 +145,8 @@ export default function App() {
               onClick={() => setFilter(key)}
               className={`flex-1 px-2 py-1.5 text-xs font-medium rounded-md transition-colors ${
                 filter === key
-                  ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900"
-                  : "text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  ? "bg-stone-900 dark:bg-white text-white dark:text-stone-900"
+                  : "text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800"
               }`}
             >
               {label} ({count})
@@ -158,7 +158,7 @@ export default function App() {
       {/* List */}
       <main className="flex-1 overflow-y-auto p-2">
         {filteredItems.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-64 text-slate-400 dark:text-slate-500">
+          <div className="flex flex-col items-center justify-center h-64 text-stone-400 dark:text-stone-500">
             <p className="text-sm">
               {filter === "unread" ? "All caught up!" : filter === "read" ? "No read items" : "No items yet"}
             </p>
