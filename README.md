@@ -1,6 +1,6 @@
 # Snack Cards
 
-Display your Chrome Reading List as cards in a new tab.
+Manage your Chrome Reading List in a side panel.
 
 ## Installation
 

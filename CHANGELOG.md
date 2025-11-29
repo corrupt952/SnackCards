@@ -10,10 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 - Initial release of Snack Cards
-- Display Chrome Reading List as beautiful cards in new tab
+- Display Chrome Reading List in a side panel
 - Filter reading list items by all/unread/read status
 - Mark articles as read/unread
 - Remove articles from reading list
-- Auto-mark articles as read when clicked
+- Auto-mark articles as read when opened
+- Open articles in current tab (matching Chrome's native behavior)
+- Unified card layout for articles and videos
+- Video thumbnail display with YouTube/Vimeo/TikTok support
 - Dark mode support
-- Video embedding support for article previews
