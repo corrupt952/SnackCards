@@ -2,7 +2,7 @@
   "name": "snack-cards",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.23.0",
+  "packageManager": "pnpm@10.24.0",
   "version": "2025.12.1",
   "description": "Manage your Chrome Reading List in a side panel",
   "scripts": {
