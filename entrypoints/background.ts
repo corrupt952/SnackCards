@@ -1,15 +1,15 @@
 export default defineBackground(() => {
   console.log("Hello background!", { id: browser.runtime.id });
 
-  // Update badge with unread count
+  // Update badge with total reading list count
   const updateBadge = async () => {
     try {
-      const items = await chrome.readingList.query({ hasBeenRead: false });
-      const unreadCount = items.length;
+      const items = await chrome.readingList.query({});
+      const totalCount = items.length;
 
-      if (unreadCount > 0) {
-        await chrome.action.setBadgeText({ text: String(unreadCount) });
-        await chrome.action.setBadgeBackgroundColor({ color: "#B91C1C" });
+      if (totalCount > 0) {
+        await chrome.action.setBadgeText({ text: String(totalCount) });
+        await chrome.action.setBadgeBackgroundColor({ color: "#57534e" });
       } else {
         await chrome.action.setBadgeText({ text: "" });
       }
