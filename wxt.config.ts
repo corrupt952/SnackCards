@@ -6,7 +6,7 @@ export default defineConfig({
   manifest: {
     permissions: ['readingList'],
     name: 'Snack Cards - Reading List Manager',
-    description: 'Manage your Chrome Reading List in a side panel',
+    description: 'Beautiful card view for your Chrome Reading List in a side panel. Articles and videos, simple and clean.',
     action: {},
   },
 });
