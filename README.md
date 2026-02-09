@@ -1,10 +1,8 @@
 # Snack Cards
 
-Manage your Chrome Reading List in a side panel.
+Beautiful card view for your Chrome Reading List in a side panel. Articles and videos, simple and clean.
 
-## Installation
-
-Install this extension from the Chrome Web Store (coming soon).
+[Chrome Web Store](https://chromewebstore.google.com/detail/snack-cards-reading-list/pegiigaifjibokehgiofjhndlkfnocoe)
 
 ## Development
 
