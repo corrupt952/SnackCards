@@ -39,7 +39,7 @@ jobs:
           ZIP_FILE=$(find .output -name "*.zip" -type f | head -n 1)
           echo "zip_file=$ZIP_FILE" >> $GITHUB_OUTPUT
       - name: Create Release
-        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
         with:
           name: Release ${{ env.SNACK_CARDS_VERSION }}
           files: ${{ steps.find_zip.outputs.zip_file }}
