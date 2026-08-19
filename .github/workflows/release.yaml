@@ -43,9 +43,12 @@ jobs:
           echo "zip_file=$ZIP_FILE" >> $GITHUB_OUTPUT
       - name: Create Release
         if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3
-        with:
-          name: Release ${{ env.SNACK_CARDS_VERSION }}
-          files: ${{ steps.find_zip.outputs.zip_file }}
-          draft: false
-          prerelease: false
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ZIP_FILE: ${{ steps.find_zip.outputs.zip_file }}
+        run: >-
+          gh release create "${GITHUB_REF_NAME}"
+          "${ZIP_FILE}"
+          --verify-tag
+          --title "Release ${SNACK_CARDS_VERSION}"
+          --notes ""
