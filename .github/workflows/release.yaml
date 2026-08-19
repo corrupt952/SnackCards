@@ -48,11 +48,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ZIP_FILE: ${{ steps.find_zip.outputs.zip_file }}
         run: |
-          if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
-            gh release upload "${GITHUB_REF_NAME}" "${ZIP_FILE}" --clobber
-          else
-            gh release create "${GITHUB_REF_NAME}" "${ZIP_FILE}" \
-              --verify-tag \
-              --title "Release ${SNACK_CARDS_VERSION}" \
-              --notes ""
-          fi
+          gh release create "${GITHUB_REF_NAME}" "${ZIP_FILE}" \
+            --verify-tag \
+            --title "Release ${SNACK_CARDS_VERSION}" \
+            --notes ""
