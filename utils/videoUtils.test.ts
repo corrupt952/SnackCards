@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { detectVideoService, isVideoUrl, getVideoThumbnail, VideoInfo } from "./videoUtils";
+import { detectVideoService, isVideoUrl, getVideoThumbnail, type VideoInfo } from "./videoUtils";
 
 describe("detectVideoService", () => {
   describe("YouTube", () => {

@@ -24,7 +24,7 @@ export default function App() {
     try {
       setLoading(true);
       setError(null);
-      const readingListItems = await chrome.readingList.query({});
+      const readingListItems = await browser.readingList.query({});
       const sortedItems = readingListItems.sort((a, b) => (b.creationTime || 0) - (a.creationTime || 0));
       setItems(sortedItems);
     } catch (err) {
@@ -37,7 +37,7 @@ export default function App() {
 
   const markAsOpened = async (url: string) => {
     try {
-      await chrome.readingList.updateEntry({ url, hasBeenRead: true });
+      await browser.readingList.updateEntry({ url, hasBeenRead: true });
       setItems((prev) => prev.map((item) => (item.url === url ? { ...item, hasBeenRead: true } : item)));
     } catch (error) {
       console.error("Failed to mark as opened:", error);
@@ -46,7 +46,7 @@ export default function App() {
 
   const removeItem = async (url: string) => {
     try {
-      await chrome.readingList.removeEntry({ url });
+      await browser.readingList.removeEntry({ url });
       setItems((prev) => prev.filter((item) => item.url !== url));
     } catch (error) {
       console.error("Failed to remove item:", error);
@@ -54,9 +54,9 @@ export default function App() {
   };
 
   const openInCurrentTab = async (url: string) => {
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
     if (tab?.id) {
-      chrome.tabs.update(tab.id, { url });
+      browser.tabs.update(tab.id, { url });
     }
   };
 

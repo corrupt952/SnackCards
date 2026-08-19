@@ -4,14 +4,14 @@ export default defineBackground(() => {
   // Update badge with total reading list count
   const updateBadge = async () => {
     try {
-      const items = await chrome.readingList.query({});
+      const items = await browser.readingList.query({});
       const totalCount = items.length;
 
       if (totalCount > 0) {
-        await chrome.action.setBadgeText({ text: String(totalCount) });
-        await chrome.action.setBadgeBackgroundColor({ color: "#57534e" });
+        await browser.action.setBadgeText({ text: String(totalCount) });
+        await browser.action.setBadgeBackgroundColor({ color: "#57534e" });
       } else {
-        await chrome.action.setBadgeText({ text: "" });
+        await browser.action.setBadgeText({ text: "" });
       }
     } catch (error) {
       console.error("Failed to update badge:", error);
@@ -22,15 +22,15 @@ export default defineBackground(() => {
   updateBadge();
 
   // Update badge when reading list changes
-  chrome.readingList.onEntryAdded.addListener(() => {
+  browser.readingList.onEntryAdded.addListener(() => {
     updateBadge();
   });
 
-  chrome.readingList.onEntryRemoved.addListener(() => {
+  browser.readingList.onEntryRemoved.addListener(() => {
     updateBadge();
   });
 
-  chrome.readingList.onEntryUpdated.addListener(() => {
+  browser.readingList.onEntryUpdated.addListener(() => {
     updateBadge();
   });
 
