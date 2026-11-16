@@ -20,7 +20,7 @@
   "author": "K@zuki.",
   "license": "MIT",
   "devDependencies": {
-    "@tailwindcss/postcss": "4.3.3",
+    "@tailwindcss/postcss": "4.3.5",
     "@tailwindcss/typography": "0.5.20",
     "@types/node": "24.19.2",
     "@types/react": "19.3.0",
@@ -29,7 +29,7 @@
     "autoprefixer": "10.6.2",
     "postcss": "8.5.31",
     "prettier": "3.9.10",
-    "tailwindcss": "4.3.3",
+    "tailwindcss": "4.3.5",
     "typescript": "7.0.2",
     "vite": "8.3.8",
     "vitest": "5.0.5",
